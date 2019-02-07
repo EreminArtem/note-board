@@ -1,0 +1,20 @@
+.even {
+    background-color: lightgrey;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    vertical-align: middle;
+    text-align: center;
+    font-style: italic;
+}
+
+th {
+    border: 1px solid black;
+    vertical-align: middle;
+    text-align: center;
+}

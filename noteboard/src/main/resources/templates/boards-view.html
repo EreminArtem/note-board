@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="/fragments/head::head(testTitle)"></div>
+<body>
+<div class="content">
+    <table>
+        <caption>Boards</caption>
+        <thead>
+        <th>Id</th>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        </thead>
+        <tbody>
+        <tr th:each="board,iter : ${boards}" th:class="${iter.even?'even':'odd'}">
+            <th th:utext="${iter.index+1}"></th>
+            <th th:utext="${board.id}"></th>
+            <th >
+                <a th:utext="${board.name}" th:href="@{/notes/{id}/(id=${board.id})}"></a>
+            </th>
+            <th>
+                <a th:href="@{/board-edit-view(id=${board.id})}">Edit</a>
+            </th>
+            <th>
+                <a th:href="@{/delete-board(id=${board.id})}">Delete</a>
+            </th>
+        </tr>
+        </tbody>
+        <form action="/create-board" method="POST">
+            <button type="submit">Create</button>
+        </form>
+    </table>
+</div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
